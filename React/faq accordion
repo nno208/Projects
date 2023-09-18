@@ -1,0 +1,48 @@
+import React, { useState } from 'react'
+
+function Main({q}) {
+    const [icon,setIcon]=useState(true);
+
+    const [s,sets]=useState(null);
+
+    function handleClicks(n){
+       setIcon(()=>!icon)
+        sets(n.id)
+    }      
+
+  return (
+    <>
+    {q.map((n) => (
+      <div key={n.id}>
+        <input type="image" src='icon.png'onClick={()=>handleClicks(n)}/>
+        <p onClick={() => handleClicks(n)}>{n.question}</p>
+        {icon && s===n.id&& <p>{n.answer}</p>}
+      </div>
+    ))}
+
+   </>
+  )
+}
+
+export default Main
+
+
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import reportWebVitals from './reportWebVitals';
+import Main from './main'
+const questions=[
+  {id:1,question:"how can i complete this challenge?", answer:"you solve it"},
+{id:2,question:"but how", answer:"you do it"}]
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <Main q={questions}/>
+  </React.StrictMode>
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
