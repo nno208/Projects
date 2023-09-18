@@ -1,0 +1,27 @@
+import React, { useState } from 'react'
+
+function Main() {
+    
+const [email,setEmail]=useState("")
+const[t,setTrue]=useState(true)
+function handleChange(event){
+setEmail(()=>event.target.value)
+console.log(email)
+}
+function handleClick(){
+  if(!email.includes("@")||!email.includes(".com")){
+    setTrue(false)
+  }else{
+  setTrue(true)
+  }
+}
+  return (
+    <>
+    <input onChange={(event)=>handleChange(event)} type="text"></input>
+    <button onClick={()=>handleClick()}>submit</button>
+{t?console.log("Tr"):<h1>please enter a valid email</h1>}
+   </>
+  )
+}
+
+export default Main
